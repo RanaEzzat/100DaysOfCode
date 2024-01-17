@@ -1,0 +1,24 @@
+#Largest Substring Between Two Equal Characters
+#https://leetcode.com/problems/largest-substring-between-two-equal-characters/description/
+
+def letterpositions(letter,str):
+    positions=[i for i in range(0, len(str)) if str[i]==letter]
+    return positions
+
+def repeatedletter(s):
+    lettersDictionary={}
+    for x in s:
+        if(not x in lettersDictionary):
+            lettersDictionary[x]=letterpositions(x,s)
+    return lettersDictionary
+
+class Solution(object):
+    def maxLengthBetweenEqualCharacters(self, s):
+        lettersDictionary=repeatedletter(s)
+        maxDifference=-1
+        for letter in lettersDictionary:
+            arr=lettersDictionary[letter]
+            difference=arr[len(arr)-1]-arr[0]-1
+            if difference>maxDifference:
+                maxDifference=difference
+        return maxDifference
