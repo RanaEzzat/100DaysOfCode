@@ -1,0 +1,31 @@
+#Unique Number of Occurrences
+#https://leetcode.com/problems/unique-number-of-occurrences/?envType=daily-question&envId=2024-01-17
+def countOccurrences(number,arr):
+  count=0
+  for i in range(0,len(arr)):
+    if arr[i]==number:
+      count+=1
+  return count
+
+def isArrayUnique(arr):
+  for i in range(0,len(arr)):
+    for j in range(0,len(arr)):
+      if i!=j:
+        if arr[i]==arr[j]:
+          return bool(False)
+  return bool(True)
+
+class Solution(object):
+    def uniqueOccurrences(self, arr):
+        """
+        :type arr: List[int]
+        :rtype: bool
+        """
+        dictionary={}
+        for x in arr:
+            if(not x in dictionary):
+                dictionary[x]=countOccurrences(x,arr)
+        occurencesArray=[]
+        for y in dictionary:
+            occurencesArray.append(dictionary[y])
+        return isArrayUnique(occurencesArray)
