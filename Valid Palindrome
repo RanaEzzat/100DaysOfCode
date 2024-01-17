@@ -1,0 +1,8 @@
+#Valid Palindrome
+#https://leetcode.com/problems/valid-palindrome/
+
+class Solution(object):
+    def isPalindrome(self, s):
+        sp=str(''.join([str(x.lower()) for x in s.split(" ")]))
+        sr=str(''.join([x for x in sp if (ord(x)>=97 and ord(x)<=122) or (ord(x)>=48 and ord(x)<=57)]))
+        return sr==sr[::-1]
