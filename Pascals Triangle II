@@ -1,0 +1,20 @@
+#Pascals Triangle II
+#https://leetcode.com/problems/pascals-triangle-ii/submissions/1149223841/
+class Solution(object):
+    def getRow(self, rowIndex):
+        array=[]
+        for i in range(0,rowIndex+1):
+            if i==0:
+                newArray=[1]
+                array.append(newArray)
+            if i==1:
+                newArray=[1,1]
+                array.append(newArray)
+            if i>1:
+                newArray=[1]
+                for j in range(0,len(array[i-1])-1):
+                    s=array[i-1][j]+array[i-1][j+1]
+                    newArray.append(s)
+                newArray.append(1)
+                array.append(newArray)
+        return array[rowIndex]
